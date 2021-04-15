@@ -1,6 +1,7 @@
 package br.com.gestac.gestac.pessoas.commons.contato.domain;
 
 import br.com.gestac.gestac.pessoas.commons.Pessoa;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +19,10 @@ public class Contato {
     private int id;
     private String telefone;
     private String email;
+
     @ManyToOne
     @JoinColumn(name = "pessoa_id", nullable = false)
+    @JsonIgnore
     private Pessoa pessoa;
 
 }

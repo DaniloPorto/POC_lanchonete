@@ -5,9 +5,9 @@ import br.com.gestac.gestac.pessoas.commons.endereco.domain.Endereco;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,11 +22,11 @@ public abstract class Pessoa implements Serializable {
     private Long id;
 
     @Setter
-    @NonNull
+    @NotNull
     private String nome;
 
     @Setter
-    @NonNull
+    @NotNull
     private String cpfCnpj;
 
     @Setter

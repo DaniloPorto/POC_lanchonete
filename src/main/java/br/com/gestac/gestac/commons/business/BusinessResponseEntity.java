@@ -1,7 +1,6 @@
-package br.com.gestac.gestac.util.business;
+package br.com.gestac.gestac.commons.business;
 
 import lombok.*;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BusinessResponse<T> {
+public class BusinessResponseEntity {
 
     private String mensagemValidacao;
     private LocalDateTime dateTime;

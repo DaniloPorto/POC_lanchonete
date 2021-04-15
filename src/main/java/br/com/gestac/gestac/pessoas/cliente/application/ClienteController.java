@@ -2,14 +2,14 @@ package br.com.gestac.gestac.pessoas.cliente.application;
 
 import br.com.gestac.gestac.pessoas.cliente.domain.Cliente;
 import br.com.gestac.gestac.pessoas.cliente.domain.ClienteService;
-import br.com.gestac.gestac.util.business.exception.BusinessException;
-import lombok.SneakyThrows;
+import br.com.gestac.gestac.commons.business.BusinessResponseEntity;
+import br.com.gestac.gestac.commons.business.BusinessResponseEntityFactory;
+import br.com.gestac.gestac.commons.business.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("cliente")
@@ -19,20 +19,19 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping("/")
-    public ResponseEntity<?> incluir(@RequestBody Cliente cliente) throws BusinessException {
-        Cliente clienteResponse = clienteService.incluir(cliente);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<BusinessResponseEntity> incluir(@Valid @RequestBody Cliente cliente) throws BusinessException {
+        clienteService.incluir(cliente);
+        return BusinessResponseEntityFactory.getResponseSucess();
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Cliente>> buscarTodos() {
-        List<Cliente> clientes = clienteService.buscarTodos();
-        return ResponseEntity.ok(clientes);
+    public ResponseEntity<BusinessResponseEntity> buscarTodos() {
+        return BusinessResponseEntityFactory.getResponseSucess(clienteService.buscarTodos());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> excluirPorId(@PathVariable Long id) throws BusinessException {
+    public ResponseEntity<BusinessResponseEntity> excluirPorId(@PathVariable Long id) throws BusinessException {
         clienteService.excluirPorId(id);
-        return ResponseEntity.ok().build();
+        return BusinessResponseEntityFactory.getResponseSucess();
     }
 }

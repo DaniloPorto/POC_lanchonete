@@ -1,6 +1,6 @@
-package br.com.gestac.gestac.util.business.exception;
+package br.com.gestac.gestac.commons.business.exception;
 
-import br.com.gestac.gestac.util.business.BusinessResponse;
+import br.com.gestac.gestac.commons.business.BusinessResponseEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,9 +12,9 @@ import java.time.ZoneId;
 public class BusinessExceptionHandler{
 
     @ExceptionHandler(value = {BusinessException.class})
-    public ResponseEntity<BusinessResponse> handleBusinessException(BusinessException e) {
+    public ResponseEntity<BusinessResponseEntity> handleBusinessException(BusinessException e) {
 
-        BusinessResponse response = BusinessResponse.builder()
+        BusinessResponseEntity response = BusinessResponseEntity.builder()
                                                     .mensagemValidacao(e.getMessage())
                                                     .httpStatus(e.getHttpStatus())
                                                     .dateTime(LocalDateTime.now(ZoneId.systemDefault()))

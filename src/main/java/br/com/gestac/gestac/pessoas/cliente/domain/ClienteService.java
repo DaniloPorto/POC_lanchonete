@@ -1,6 +1,6 @@
 package br.com.gestac.gestac.pessoas.cliente.domain;
 
-import br.com.gestac.gestac.util.business.exception.BusinessException;
+import br.com.gestac.gestac.commons.business.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,25 +17,41 @@ public class ClienteService {
 
     @Transactional
     public Cliente incluir(Cliente cliente) throws BusinessException {
-        Cliente clienteSalvo = clienteRepository.save(cliente);
-        Optional<Cliente> clienteOptional = buscarPorId(clienteSalvo.getId());
 
-        if (clienteOptional.isPresent()) {
+        try {
+            Cliente clienteSalvo = clienteRepository.save(cliente);
+            Optional<Cliente> clienteOptional = buscarPorId(clienteSalvo.getId());
+
+            if (clienteOptional.isEmpty()) {
+                throw new BusinessException("");
+            }
+
             clienteOptional.get().setContatos(cliente.getContatos());
             clienteOptional.get().setEnderecos(cliente.getEnderecos());
+
             return clienteRepository.save(clienteOptional.get());
+        } catch (Exception e) {
+            throw new BusinessException("Erro ao tentar incluir um cliente", HttpStatus.INTERNAL_SERVER_ERROR.value());
+            //todo LOGs
         }
 
-        return clienteOptional.get();
     }
 
     @Transactional
     public void excluirPorId(Long idCliente) throws BusinessException {
-        Optional<Cliente> clienteOptional = buscarPorId(idCliente);
-        if (clienteOptional.isPresent()) {
-            clienteRepository.deleteById(idCliente);
+
+        try {
+            Optional<Cliente> clienteOptional = buscarPorId(idCliente);
+
+            if (clienteOptional.isEmpty()) {
+                throw new BusinessException("Não foi possivel encontrar um cliente com o ID " + idCliente + ", para a exclusão");
+            }
+
+            clienteRepository.delete(clienteOptional.get());
+        }catch(Exception e) {
+            throw new BusinessException("Falha ao tentar excluir o cliente com ID: " + idCliente, HttpStatus.INTERNAL_SERVER_ERROR.value());
         }
-        throw new BusinessException("Não foi possivel encontrar um cliente com o ID " + idCliente, HttpStatus.UNPROCESSABLE_ENTITY.value());
+
     }
 
     public Optional<Cliente> buscarPorId(Long idCliente) {

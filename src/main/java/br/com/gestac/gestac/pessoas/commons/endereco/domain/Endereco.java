@@ -1,6 +1,7 @@
 package br.com.gestac.gestac.pessoas.commons.endereco.domain;
 
 import br.com.gestac.gestac.pessoas.commons.Pessoa;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,9 @@ public class Endereco {
     private String numero;
     private String Cidade;
     private String cep;
+
     @ManyToOne
     @JoinColumn(name = "pessoa_id", nullable = false)
+    @JsonIgnore
     private Pessoa pessoa;
 }
