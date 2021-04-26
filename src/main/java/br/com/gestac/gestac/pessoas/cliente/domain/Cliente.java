@@ -1,7 +1,7 @@
 package br.com.gestac.gestac.pessoas.cliente.domain;
 
 import br.com.gestac.gestac.pessoas.commons.Pessoa;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

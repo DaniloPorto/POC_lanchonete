@@ -3,7 +3,7 @@ package br.com.gestac.gestac.commons.business.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-public class BusinessException extends Exception{
+public class BusinessException extends Exception {
 
     @Getter
     private int httpStatus;
@@ -12,7 +12,6 @@ public class BusinessException extends Exception{
      * Por padrão este construtor define o status http UNPROCESSABLE_ENTITY
      *
      * @param mensagem É o texto da validação gerada
-     *
      */
     public BusinessException(String mensagem) {
         super(mensagem);
@@ -22,7 +21,7 @@ public class BusinessException extends Exception{
     /**
      * Este construtor permite a inserção de um status http
      *
-     * @param mensagem É o texto da validação gerada
+     * @param mensagem   É o texto da validação gerada
      * @param httpStatus Status http de retorno
      */
     public BusinessException(String mensagem, int httpStatus) {

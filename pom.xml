@@ -12,7 +12,7 @@
 	<artifactId>lanchonete</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lanchonete</name>
-	<description>Aplicação para gestão de academias</description>
+	<description>Aplicação para gestão de Lanchonetes</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

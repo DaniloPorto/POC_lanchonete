@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,13 +13,13 @@ public class BusinessResponseEntityFactory {
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(Object result) {
 
-       BusinessResponseEntity response = BusinessResponseEntity.builder()
+        BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
                 .objetos(Arrays.asList(result))
                 .httpStatus(HttpStatus.OK.value())
                 .build();
 
-       return ResponseEntity.ok(response);
+        return ResponseEntity.ok(response);
     }
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(List<Object> results) {
@@ -36,6 +37,19 @@ public class BusinessResponseEntityFactory {
 
         BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
+                .objetos(new ArrayList<>())
+                .httpStatus(HttpStatus.OK.value())
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+    public static ResponseEntity<BusinessResponseEntity> getResponseSucess(String mensagem) {
+
+        BusinessResponseEntity response = BusinessResponseEntity.builder()
+                .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
+                .objetos(new ArrayList<>())
+                .mensagem(mensagem)
                 .httpStatus(HttpStatus.OK.value())
                 .build();
 

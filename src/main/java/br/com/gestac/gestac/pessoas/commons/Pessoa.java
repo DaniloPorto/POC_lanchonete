@@ -2,6 +2,7 @@ package br.com.gestac.gestac.pessoas.commons;
 
 import br.com.gestac.gestac.pessoas.commons.contato.domain.Contato;
 import br.com.gestac.gestac.pessoas.commons.endereco.domain.Endereco;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,12 +42,16 @@ public abstract class Pessoa implements Serializable {
 
 
     public void setContatos(List<Contato> contatos) {
-        contatos.forEach(contato -> {contato.setPessoa(this);});
+        contatos.forEach(contato -> {
+            contato.setPessoa(this);
+        });
         this.contatos = contatos;
     }
 
     public void setEnderecos(List<Endereco> enderecos) {
-        enderecos.forEach(endereco -> {endereco.setPessoa(this);});
+        enderecos.forEach(endereco -> {
+            endereco.setPessoa(this);
+        });
         this.enderecos = enderecos;
     }
 }

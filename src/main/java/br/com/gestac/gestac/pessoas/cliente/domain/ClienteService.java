@@ -42,13 +42,11 @@ public class ClienteService {
 
         try {
             Optional<Cliente> clienteOptional = buscarPorId(idCliente);
-
             if (clienteOptional.isEmpty()) {
                 throw new BusinessException("Não foi possivel encontrar um cliente com o ID " + idCliente + ", para a exclusão");
             }
-
             clienteRepository.delete(clienteOptional.get());
-        }catch(Exception e) {
+        } catch (Exception e) {
             throw new BusinessException("Falha ao tentar excluir o cliente com ID: " + idCliente, HttpStatus.INTERNAL_SERVER_ERROR.value());
         }
 

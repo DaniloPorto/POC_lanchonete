@@ -9,16 +9,16 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 @ControllerAdvice
-public class BusinessExceptionHandler{
+public class BusinessExceptionHandler {
 
     @ExceptionHandler(value = {BusinessException.class})
     public ResponseEntity<BusinessResponseEntity> handleBusinessException(BusinessException e) {
 
         BusinessResponseEntity response = BusinessResponseEntity.builder()
-                                                    .mensagemValidacao(e.getMessage())
-                                                    .httpStatus(e.getHttpStatus())
-                                                    .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
-                                                    .build();
+                .mensagem(e.getMessage())
+                .httpStatus(e.getHttpStatus())
+                .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
+                .build();
 
         return ResponseEntity.status(e.getHttpStatus()).body(response);
     }
