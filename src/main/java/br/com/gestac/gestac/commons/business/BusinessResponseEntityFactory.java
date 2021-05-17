@@ -22,6 +22,18 @@ public class BusinessResponseEntityFactory {
         return ResponseEntity.ok(response);
     }
 
+    public static ResponseEntity<BusinessResponseEntity> getResponseSucess(Object result, String mensagem) {
+
+        BusinessResponseEntity response = BusinessResponseEntity.builder()
+                .mensagem(mensagem)
+                .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
+                .objetos(Arrays.asList(result))
+                .httpStatus(HttpStatus.OK.value())
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(List<Object> results) {
 
         BusinessResponseEntity response = BusinessResponseEntity.builder()

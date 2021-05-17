@@ -23,8 +23,8 @@ public class Endereco {
     private String Cidade;
     private String cep;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pessoa_id", nullable = false)
-    @JsonIgnore
     private Pessoa pessoa;
 }

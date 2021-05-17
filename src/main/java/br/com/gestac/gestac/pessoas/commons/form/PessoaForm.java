@@ -3,9 +3,7 @@ package br.com.gestac.gestac.pessoas.commons.form;
 import br.com.gestac.gestac.pessoas.commons.TipoPessoa;
 import br.com.gestac.gestac.pessoas.commons.contato.domain.Contato;
 import br.com.gestac.gestac.pessoas.commons.endereco.domain.Endereco;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -14,7 +12,11 @@ import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PessoaForm {
+
+    long id;
 
     @NotNull
     @NotBlank

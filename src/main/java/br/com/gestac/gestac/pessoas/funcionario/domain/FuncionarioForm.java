@@ -1,25 +1,28 @@
 package br.com.gestac.gestac.pessoas.funcionario.domain;
 
 import br.com.gestac.gestac.pessoas.commons.form.PessoaForm;
-import br.com.gestac.gestac.pessoas.funcionario.domain.Cargo;
-import br.com.gestac.gestac.pessoas.funcionario.domain.Funcionario;
 import br.com.gestac.gestac.pessoas.jornada.domain.Jornada;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class FuncionarioForm extends PessoaForm {
 
     @NotNull
-    @Min(1)
-    private Long idJornada;
+    private long idJornada;
 
     @NotNull
     private Cargo cargo;
+
+    private LocalDate dataNascimento;
 
     public Funcionario toModel() {
         Funcionario func = new Funcionario();

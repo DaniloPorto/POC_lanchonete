@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,6 +41,10 @@ public class JornadaService {
             throw new BusinessException("Jornada " + jornadaOptional.get().getId() + " não encontrada");
         }
         return jornadaOptional.get();
+    }
+
+    public List<Jornada> buscarTodas() {
+        return jornadaRepository.findAll();
     }
 
 }

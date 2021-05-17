@@ -17,13 +17,12 @@ public class ClienteService {
 
     @Transactional
     public Cliente incluir(Cliente cliente) throws BusinessException {
-
         try {
             Cliente clienteSalvo = clienteRepository.save(cliente);
             Optional<Cliente> clienteOptional = buscarPorId(clienteSalvo.getId());
 
             if (clienteOptional.isEmpty()) {
-                throw new BusinessException("");
+                throw new BusinessException("Falha ao incluir cliente " + cliente.getNome());
             }
 
             clienteOptional.get().setContatos(cliente.getContatos());
@@ -39,7 +38,6 @@ public class ClienteService {
 
     @Transactional
     public void excluirPorId(Long idCliente) throws BusinessException {
-
         try {
             Optional<Cliente> clienteOptional = buscarPorId(idCliente);
             if (clienteOptional.isEmpty()) {
