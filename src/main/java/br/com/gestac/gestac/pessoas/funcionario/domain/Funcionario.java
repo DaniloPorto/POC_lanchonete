@@ -17,8 +17,10 @@ import java.time.LocalDate;
 public class Funcionario extends Pessoa {
 
     private LocalDate dataNascimento;
+
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
+
     @OneToOne
     private Jornada jornada;
 }

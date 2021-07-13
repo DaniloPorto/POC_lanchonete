@@ -1,6 +1,7 @@
-package br.com.gestac.gestac.commons.business.exception;
+package br.com.gestac.gestac.commons.handlers;
 
 import br.com.gestac.gestac.commons.business.BusinessResponseEntity;
+import br.com.gestac.gestac.commons.business.exception.BusinessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
