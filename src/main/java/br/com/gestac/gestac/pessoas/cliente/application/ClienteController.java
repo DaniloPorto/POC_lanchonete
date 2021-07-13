@@ -30,8 +30,8 @@ public class ClienteController {
         return BusinessResponseEntityFactory.getResponseSucess(clienteService.buscarTodos());
     }
 
-    @DeleteMapping("/excluir/{id}")
-    public ResponseEntity<BusinessResponseEntity> excluirPorId(@PathVariable Long id) throws BusinessException {
+    @DeleteMapping("/excluir/")
+    public ResponseEntity<BusinessResponseEntity> excluirPorId(@RequestParam Long id) throws BusinessException {
         clienteService.excluirPorId(id);
         return BusinessResponseEntityFactory.getResponseSucess();
     }
