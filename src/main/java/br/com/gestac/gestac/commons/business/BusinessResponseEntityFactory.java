@@ -12,7 +12,6 @@ import java.util.List;
 public class BusinessResponseEntityFactory {
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(Object result) {
-
         BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
                 .objetos(Arrays.asList(result))
@@ -23,7 +22,6 @@ public class BusinessResponseEntityFactory {
     }
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(Object result, String mensagem) {
-
         BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .mensagem(mensagem)
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
@@ -35,7 +33,6 @@ public class BusinessResponseEntityFactory {
     }
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(List<Object> results) {
-
         BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
                 .objetos(results)
@@ -46,7 +43,6 @@ public class BusinessResponseEntityFactory {
     }
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess() {
-
         BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
                 .objetos(new ArrayList<>())
@@ -57,7 +53,6 @@ public class BusinessResponseEntityFactory {
     }
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(String mensagem) {
-
         BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
                 .objetos(new ArrayList<>())
