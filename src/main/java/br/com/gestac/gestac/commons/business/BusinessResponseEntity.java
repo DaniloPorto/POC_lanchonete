@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BusinessResponseEntity {
 
-    private String mensagem;
+    private List<String> mensagens;
     private LocalDateTime dateTime;
     private int httpStatus;
     private List<Object> objetos = new ArrayList<>();

@@ -23,7 +23,7 @@ public class BusinessResponseEntityFactory {
 
     public static ResponseEntity<BusinessResponseEntity> getResponseSucess(Object result, String mensagem) {
         BusinessResponseEntity response = BusinessResponseEntity.builder()
-                .mensagem(mensagem)
+                .mensagens(Arrays.asList(mensagem))
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
                 .objetos(Arrays.asList(result))
                 .httpStatus(HttpStatus.OK.value())
@@ -56,7 +56,7 @@ public class BusinessResponseEntityFactory {
         BusinessResponseEntity response = BusinessResponseEntity.builder()
                 .dateTime(LocalDateTime.now(ZoneId.systemDefault()))
                 .objetos(new ArrayList<>())
-                .mensagem(mensagem)
+                .mensagens(Arrays.asList(mensagem))
                 .httpStatus(HttpStatus.OK.value())
                 .build();
 
